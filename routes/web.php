@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Anggota;
+use App\Models\Buku;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $data['anggotas'] = Anggota::paginate(4); //anggota = ke view
+    $data['bukus'] = Buku::paginate(4); //anggota = ke view
     return view('app', $data);
 });
 
-Route::resource('anggota', 'AppController'); // anggota = route nya untuk button
+Route::resource('buku', 'BukuController'); // anggota = route nya untuk button

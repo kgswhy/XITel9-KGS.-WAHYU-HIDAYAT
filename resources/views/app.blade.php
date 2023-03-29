@@ -25,9 +25,9 @@
 				@endif
 				{{-- End of Notification Toast --}}
 				<p class="font-bold text-blue-500 py-4 text-xl">
-					List Data Anggota
+					List Data buku
 				</p>
-				<a href="{{ route('anggota.create') }}">
+				<a href="{{ route('buku.create') }}">
 					<button class="btn btn-sm mb-2 border-0 bg-green-500 bg-transparent hover:bg-green-600 rounded-lg text-white">
 						Tambah
 					</button>
@@ -37,20 +37,20 @@
 						<table class="table-auto w-full text-left">
 							<thead class="text-blue-500 uppercase">
 								<tr>
-									<th class="w-28 py-4 pl-4 animate-pulse">Nis</th>
-									<th class="w-72 animate-pulse">Nama</th>
-									<th class="w-60 animate-pulse ">Kelas</th>
+									<th class="w-28 py-4 pl-4 animate-pulse">Kode Buku</th>
+									<th class="w-72 animate-pulse">Nama Buku</th>
+									<th class="w-60 animate-pulse ">Kategory</th>
 									<th class="w-60 animate-pulse">Detail</th>
 									<th class="w-40 animate-pulse">Aksi</th>
 								</tr>
 							</thead>
 							<tbody class="text-gray-600 bg-white">
 								{{-- Data Table --}}
-								@forelse ($anggotas as $anggota)
+								@forelse ($bukus as $buku)
 								<tr class="hover:bg-gray-200 hover:bg-opacity-50">
-									<td class="px-4">{{ $anggota->Nis }}</td>
-									<td>{{ $anggota->nama }}</td>
-									<td>{{ $anggota->Kelas }}</td>
+									<td class="px-4">{{ $buku->Kode_Buku }}</td>
+									<td>{{ $buku->Nama_Buku }}</td>
+									<td>{{ $buku->Kategori }}</td>
 									<td>
 										<div class="collapse"> 
 											<input type="checkbox">
@@ -62,31 +62,23 @@
 											<div class="collapse-content"> 
 												<table class="table-auto text-sm">
 													<tr>
-														<th class="h-8 align-bottom text-blue-500">Tempat Tanggal Lahir</th>
+														<th class="h-8 align-bottom text-blue-500">Penerbit dan Waktu Terbit</th>
 													</tr>
 													<tr>
-														<td>{{ $anggota->tempat_lahir }}, {{ $anggota->tanggal_lahir }}</td>
-													</tr>
-
-													<tr>
-														<th class="h-8 align-bottom text-blue-500">Alamat</th>
+														<td>{{ $buku->Penerbit }}, {{ $buku->Tanggal_Terbit }}</td>
 													</tr>
 													<tr>
-														<td>{{ $anggota->alamat }}</td>
+														<th class="h-8 align-bottom text-blue-500">Deskripsi</th>
 													</tr>
 													<tr>
-														<th class="h-8 align-bottom text-blue-500">Kelas</th>
-													</tr>												
-													<tr>
-														<td>{{ $anggota->Kelas }}</td>
-													</tr>
+														<td>{{ $buku->Deskripsi }}</td>
 												</table>
 											</div>
 										</div>
 									</td>
 									<td>
 										<div class="flex">
-											<a href="{{ route('anggota.edit', $anggota->id) }}">
+											<a href="{{ route('buku.edit', $buku->id) }}">
 												<button type="button" class="btn btn-sm border-0 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white mr-2"> Ubah </button>
 											</a>
 											<div x-data="{ show: false }">
@@ -101,7 +93,7 @@
 															</div>
 															<div class="mt-3 flex justify-end space-x-2">
 																<button @click={show=false} type="button" class="btn btn-sm bg-gray-500 hover:bg-gray-600  border-0 rounded-lg ">Batal</button>
-																<form action="{{ route('anggota.destroy', $anggota->id) }}" method="post">
+																<form action="{{ route('buku.destroy', $buku->id) }}" method="post">
 																	@csrf
 																	@method('DELETE')
 																	<button class="btn btn-sm border-0 bg-red-500 hover:bg-red-600 rounded-lg text-white">Hapus</button>
@@ -117,13 +109,13 @@
 								</tr>
 								@empty
 								<tr>
-									<td class="pl-4">Data Kosong</td>
+									<td class="mb-5 align-middle text-center">Data Kosong</td>
 								</tr>
 								@endforelse
 								{{-- End of Data Table --}}
 							</tbody>
 						</table>
-						{{ $anggotas->links('layouts/pagination') }}
+						{{ $bukus->links('layouts/pagination') }}
 					</div>
 				</div>
 			</div>

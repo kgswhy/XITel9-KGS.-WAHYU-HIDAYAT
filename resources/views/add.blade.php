@@ -14,7 +14,7 @@
     <div class="container h-screen py-1 px-4 mx-auto bg-green-200">
         <div class="my-4 rounded-xl glass shadow-lg py-1 px-4">
             <p class="font-bold text-green-500 py-4 text-xl">
-                Tambah Data Anggota
+                Tambah Data buku
             </p>
             {{-- Error Alert  --}}
             @if (count($errors))
@@ -35,68 +35,71 @@
             {{-- End Error Alert --}}
             <div class="mb-4 rounded-xl bg-white px-4 py-1">
                 <div class="pb-2 pt-1 text-gray-600">
-                    <form action="{{ route('anggota.store') }}" method="post" class="grid grid-cols-3 gap-3">
+                    <form action="{{ route('buku.store') }}" method="post" class="grid grid-cols-3 gap-3">
                         @csrf
                         <div class="form-control">
                             <label class="label">
-                                <span class="label-text text-black animate-bounce">Nis</span>
+                                <span class="label-text text-black animate-bounce">Kode Buku</span>
                             </label>
-                            <input type="text" name="Nis"
+                            <input type="text" name="Kode_Buku"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 animate-pulse"
-                                value="{{ old('Nis') }}" placeholder="Masukkan Nis anda">
+                                value="{{ old('Kode_Buku') }}" placeholder="Masukkan Nis anda">
                         </div>
                         <div class="form-control">
                             <label class="label">
-                                <span class="label-text text-black animate-bounce">Nama</span>
+                                <span class="label-text text-black animate-bounce">Nama Buku</span>
                             </label>
-                            <input type="text" name="nama" placeholder="Masukkan Nama Anda"
+                            <input type="text" name="Nama_Buku" placeholder="Masukkan Nama Anda"
                                 class="bg-gray-50 border animate-pulse border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                value="{{ old('nama') }}">
+                                value="{{ old('Nama_Buku') }}">
                         </div>
                         <div class="form-control">
                             <label class="label">
-                                <span class="label-text text-black animate-bounce">Kelas</span>
+                                <span class="label-text text-black animate-bounce">Kategori</span>
                             </label>
                             <select
                                 class="bg-gray-50 border animate-pulse border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                name="Kelas">
-                                <option disabled="disabled" selected>Pilih Kelas</option>
-                                <option value="X" {{ old('Kelas') == 'X' ? 'selected' : '' }}> X</option>
-                                <option value="XI" {{ old('Kelas') == 'XI' ? 'selected' : '' }}> XI</option>
-                                <option value="XII" {{ old('Kelas') == 'XII' ? 'selected="selected"' : '' }}> XII</option>
+                                name="Kategori">
+                                <option disabled="disabled" selected>Pilih Kategori Buku</option>
+                                <option value="Pelajaran" {{ old('Kategori') == 'Pelajaran' ? 'selected' : '' }}> Pelajaran</option>
+                                <option value="Pengayaan" {{ old('Kategori') == 'Pengayaan' ? 'selected' : '' }}> Pengayaan</option>
+                                <option value="Referensi" {{ old('Kategori') == 'Referensi' ? 'selected="selected"' : '' }}> Referensi</option>
                             </select>
                         </div>
                         <div class="form-control">
                             <label class="label">
-                                <span class="label-text text-black animate-bounce">Tempat Lahir</span>
+                                <span class="label-text text-black animate-bounce">Penerbit</span>
                             </label>
-                            <input type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir anda"
+                            <input type="text" name="Penerbit" placeholder="Masukkan Tempat Lahir anda"
                                 class="bg-gray-50 border animate-pulse border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                value="{{ old('tempat_lahir') }}">
+                                value="{{ old('Penerbit') }}">
                         </div>
                         <div class="form-control">
                             <label class="label">
-                                <span class="label-text text-black animate-bounce">Tanggal Lahir</span>
+                                <span class="label-text text-black animate-bounce">Deskripsi</span>
+                            </label>
+                            <input type="text" name="Deskripsi" placeholder="Masukkan Deskripsi Buku anda"
+                                class="bg-gray-50 border animate-pulse border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                value="{{ old('Deskripsi') }}">
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text text-black animate-bounce">Tanggal Terbit</span>
                             </label>
                             <div class="relative max-w-sm">
 
                                 <input  type="date"
                                     class="bg-gray-50 border border-gray-300 animate-pulse text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Masukkan Tanggal Lahir anda" value="{{ old('tanggal_lahir') }}" name="tanggal_lahir">
+                                    placeholder="Masukkan Tanggal Lahir anda" value="{{ old('Tanggal_Terbit') }}" name="Tanggal_Terbit">
                             </div>
+                        </div>
 
-                        </div>
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text text-black animate-bounce">Alamat</span>
-                            </label>
-                            <input type="text" name="alamat" placeholder="Masukkan Alamat anda"
-                                class="bg-gray-50 border animate-pulse border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                value="{{ old('alamat') }}">
-                        </div>
+
+
+
 
                         <div class="flex justify-end col-span-3 space-x-1">
-                            <a href="{{ route('anggota.index') }}" class="mt-3">
+                            <a href="{{ route('buku.index') }}" class="mt-3">
                                 <button type="button"
                                     class="btn btn-sm border-0 bg-red-500 hover:bg-red-600 rounded-lg text-white mr-1">Batal</button>
                             </a>
